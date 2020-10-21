@@ -30,7 +30,7 @@
 
   * Quels sont les états possibles d'une promesse ?
 
-    * en cours, resolue, rejectée
+    * en cours, resolue, rejetée
 
   * A quoi servent les fonctions de l'objet Array map, filter, reduce ? Quel est la différence entre map et forEach ? Peux tu me donner d'autre fonction de l'objet Array ? 
 
@@ -94,9 +94,17 @@
 
     * Vuex ? Nécessaire ?
 
+  * Framework de test ? As-tu deja rédigé des tests unitaires ? 
+
+    * Jest, Mocha ? 
+
   * Frameworks CSS ?
 
     * bootstrap, bulma, antdesign...
+
+  * Git c'est quoi ?
+
+  * Difference entre un git merge et un git rebase ? 
 
   * Database
 
@@ -121,8 +129,55 @@
 
   implementer la fonction retourner une suite de 0 à 20 sous la forme: '0, 1, 1, 2, ...'
   ```
-  Particularité de cette fonction ? C'est quoi une fonction récursive ?
+  ```
+  const suiteFibo = (t)  => {
+    const fibo = (n) => {
+      if (n <= 1) {
+        return n
+      } else {
+        return fibo(n - 1) + fibo(n - 2)
+      }
+    }
 
+    let suite = []
+    for (let i = 0; i <= t; i++){
+      suite.push(fibo(i))
+    }
+
+    return suite.join(', ')
+  }
+  console.log(suiteFibo(10))
+
+  ```
+
+  Particularité de cette fonction ? C'est quoi une fonction récursive ? amélioration de la fonction ? (memorisation)
+
+  version améliorée 
+
+  ```
+  const suiteFibo = (t)  => {
+    let temp = {}
+    const fibo = (n) => {
+      if (n <= 1) {
+        return n
+      } else {
+        if (!temp[n]) {
+          temp[n] = fibo(n - 1) + fibo(n - 2)
+        }
+        return temp[n]
+      }
+    }
+
+    let suite = []
+    for (let i = 0; i <= t; i++){
+      suite.push(fibo(i))
+    }
+
+    return suite.join(', ')
+  }
+  console.log(suiteFibo(10))
+
+  ```
   * fizzbuzz
 
   ```
@@ -131,6 +186,23 @@
   Si x divisible par 3 => Fizz
   Si x divisible par 5 => Buzz
   Sinon => x
+  ```
+  ```
+  const fizzbuzz = (x) => {
+    if (x % 15 === 0) {
+      return 'FizzBuzz'
+    } else if (x % 3 === 0) {
+      return 'Fizz'
+    } else if (x % 5 === 0) {
+      return 'Buzz'
+    } else {
+      return x
+    }
+  }
+
+  for (let i = 1; i <= 100; i++) {
+    console.log(fizzbuzz(i))
+  }
   ```
 
   * Output de ces lignes ? 
@@ -150,7 +222,7 @@
   
   * Créer une fonction pour print un escalier de # pour une hauteur de  x marches 
   ```
-  Pour x = 4 l'outpur sera :
+  Pour x = 4 l'output sera :
      #
     ##
    ###
@@ -164,3 +236,10 @@
     }
   }
   ```
+
+
+# Conclusion
+
+  * Tu as des questions ? 
+
+  * Des suggestions d'améliorations ?
